@@ -1,0 +1,46 @@
+body{
+    background-color: #FEFCAD;
+}
+
+.Container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+}
+
+.Header{
+    grid-row: 1/2;
+    grid-column: 1/2;
+    background-color: #92977e;
+    
+}
+
+.Header h1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.BookInputContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    grid-row: 2/3;
+    grid-column: 3/4;
+    background-color: #e6e18f;
+}
+
+.BooksCollectionContainer{
+    grid-row: 3 / span 2;
+    grid-column: 2 / span 3;
+    background-color: #f4edaa;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: repeat(2, 1fr);
+}
+
+.Book{
+
+    background-color: #EADDA6;
+
+}
