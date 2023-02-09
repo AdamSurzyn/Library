@@ -18,7 +18,7 @@ function Book(title, year, author, pages, read){
     this.author = author
     this.pages = pages
     this.read = read
-
+    //when true 'read = yes, I've read this book" and the oposite when false
     this.info = function info() { 
         return `${title} written in year ${year}, by ${author} and has ${pages} pages. Was it read by me? Well ${read}.`
     }
@@ -29,9 +29,24 @@ function addBookToShelf(book){
     shelf.push(book)
 }
 
-const theHobbit = new Book("The Hobbit", "1957", "JRR Tolkien", "295", true)
+let bookTitle = prompt("Please enter the title of the book", "The Hobbit")
+let bookYear = prompt("Please enter the year in which the book was written", "1957")
+let bookAuthor = prompt("Please enter the author of the book", "JRR Tolkien")
+let bookPages = prompt("How many pages are there in this book?", "295")
+let bookRead = prompt("Did you read it?", "false")
+
+const theHobbit = new Book(bookTitle, bookYear, bookAuthor, bookPages, bookRead)
 
 addBookToShelf(theHobbit)
 
-console.log(theHobbit.info())
-console.log(shelf)
+//******************************************
+//Now have to create a book html element for each book on the shelf. Then display it in the element itself
+//******************************************
+
+let bookaa = document.getElementsByClassName("Book")[0]
+
+for(information in theHobbit){
+    let newchild = bookaa.appendChild(document.createElement('li'))
+    newchild.innerHTML = theHobbit.information
+    //why is it undefined :(
+}
