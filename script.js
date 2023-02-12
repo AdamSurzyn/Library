@@ -49,6 +49,24 @@ function addBooksToSite(shelf){
     })
 }
 
+function addBook(book){
+
+    let booksContainer = document.getElementsByClassName("BooksCollectionContainer")[0]
+    let i = booksContainer.childElementCount
+    let appendedBook = booksContainer.appendChild(document.createElement('div'))
+    appendedBook.className = `Book ${i.toString()}`
+    let newBook = booksContainer.getElementsByClassName(`Book ${i.toString()}`)[0]
+    let bookProperties = Object.keys(book)
+
+    
+    bookProperties.forEach(property =>{
+
+        let newchild = newBook.appendChild(document.createElement('li'))
+        newchild.innerHTML = book[property]
+
+    }) 
+}
+
 let bookTitle = prompt("Please enter the title of the book", "The Hobbit")
 let bookYear = prompt("Please enter the year in which the book was written", "1957")
 let bookAuthor = prompt("Please enter the author of the book", "JRR Tolkien")
