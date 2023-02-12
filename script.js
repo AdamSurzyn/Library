@@ -45,8 +45,17 @@ addBookToShelf(theHobbit)
 
 let bookaa = document.getElementsByClassName("Book")[0]
 
-for(information in theHobbit){
-    let newchild = bookaa.appendChild(document.createElement('li'))
-    newchild.innerHTML = theHobbit.information
-    //why is it undefined :(
-}
+
+shelf.forEach(book =>{
+
+    let bookProperties = Object.keys(book)
+
+    
+    bookProperties.forEach(property =>{
+
+        let newchild = bookaa.appendChild(document.createElement('li'))
+        newchild.innerHTML = book[property]
+
+    }) 
+
+})
