@@ -36,14 +36,17 @@ let bookPages = prompt("How many pages are there in this book?", "295")
 let bookRead = prompt("Did you read it?", "false")
 
 const theHobbit = new Book(bookTitle, bookYear, bookAuthor, bookPages, bookRead)
+const mobyDick = new Book("Moby Dick", "1900", "the one", "100", "false")
+
 
 addBookToShelf(theHobbit)
+addBookToShelf(mobyDick)
 
 //******************************************
 //Now have to create a book html element for each book on the shelf. Then display it in the element itself
 //******************************************
 
-let bookaa = document.getElementsByClassName("Book")[0]
+let booksContainer = document.getElementsByClassName("Book")[0]
 
 
 shelf.forEach(book =>{
@@ -53,7 +56,7 @@ shelf.forEach(book =>{
     
     bookProperties.forEach(property =>{
 
-        let newchild = bookaa.appendChild(document.createElement('li'))
+        let newchild = booksContainer.appendChild(document.createElement('li'))
         newchild.innerHTML = book[property]
 
     }) 
