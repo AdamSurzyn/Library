@@ -51,6 +51,8 @@ function addBooksToSite(shelf){
 
 function addBook(book){
 
+    addBookToShelf(book)
+
     let booksContainer = document.getElementsByClassName("BooksCollectionContainer")[0]
     let i = booksContainer.childElementCount
     let appendedBook = booksContainer.appendChild(document.createElement('div'))
@@ -82,5 +84,12 @@ addBookToShelf(mobyDick)
 
 addBooksToSite(shelf)
 
+document.getElementsByClassName("BookInputContainer")[0].addEventListener("submit", function (e){
+    console.log("i hear")
+    e.preventDefault()
+    const formData = new FormData(e.target)
+    const book = Object.fromEntries(formData)
+    addBook(book)
+})
 
 
