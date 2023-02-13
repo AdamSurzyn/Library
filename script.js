@@ -1,6 +1,5 @@
 /*
 ***TO DO******************************
-3)Add a 'new book' button taht brings up a form and allows users to input details for the book they want to add.
 4)Add a button that will remove the book from display
 5)Add a button on a book that will change its display status
 **************************************
@@ -8,7 +7,7 @@
 
 
 
-let shelf = []
+let shelf =[]
 
 function Book(title, year, author, pages, read){
     this.title = title
@@ -21,6 +20,9 @@ function Book(title, year, author, pages, read){
         return `${title} written in year ${year}, by ${author} and has ${pages} pages. Was it read by me? Well ${read}.`
     }
 
+    // this.remove = function remove(i){
+    //     document.getElementById(i).remove
+    // }
 }
 
 function addBookToShelf(book){
@@ -59,8 +61,9 @@ function addBook(book){
     appendedBook.className = `Book ${i.toString()}`
     let newBook = booksContainer.getElementsByClassName(`Book ${i.toString()}`)[0]
     let bookProperties = Object.keys(book)
+    appendedBook.id = i
+    addDeleteButton(newBook, i)
 
-    
     bookProperties.forEach(property =>{
 
         let newchild = newBook.appendChild(document.createElement('li'))
@@ -69,27 +72,26 @@ function addBook(book){
     }) 
 }
 
-let bookTitle = prompt("Please enter the title of the book", "The Hobbit")
-let bookYear = prompt("Please enter the year in which the book was written", "1957")
-let bookAuthor = prompt("Please enter the author of the book", "JRR Tolkien")
-let bookPages = prompt("How many pages are there in this book?", "295")
-let bookRead = prompt("Did you read it?", "false")
-
-const theHobbit = new Book(bookTitle, bookYear, bookAuthor, bookPages, bookRead)
-const mobyDick = new Book("Moby Dick", "1900", "the one", "100", "false")
-
-
-addBookToShelf(theHobbit)
-addBookToShelf(mobyDick)
-
-addBooksToSite(shelf)
+function addDeleteButton(e, i){
+    let button = document.createElement("button")
+    button.innerHTML = "Remove Book"
+    button.className = `RemoveBook ${i}`
+    e.appendChild(button)
+    button.addEventListener("click", function(e){
+        let target = e.currentTarget
+        target.parentNode.remove()
+        console.log("Removed a book!")
+    })
+}
 
 document.getElementsByClassName("BookInputContainer")[0].addEventListener("submit", function (e){
-    console.log("i hear")
+
     e.preventDefault()
     const formData = new FormData(e.target)
     const book = Object.fromEntries(formData)
     addBook(book)
+    console.log("Added a book!")
+
 })
 
 
